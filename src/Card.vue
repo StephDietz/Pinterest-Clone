@@ -1,5 +1,5 @@
 <template lang="html">
-  <div @mouseover="hover = true" @mouseleave="hover = flase" class="relative">
+  <div @mouseover="hover = true" @mouseleave="hover = false" class="relative">
     <img :src="src" alt="" class="rounded-lg">
     <div v-if="hover" class="absolute bg-dark opacity-50 inset-0 w-full h-full rounded-lg"></div>
     <div v-if="hover" class="absolute top-0 w-full h-full flex flex-col justify-between p-3">
