@@ -2,7 +2,7 @@
   <div class="">
     <TopNav />
     <div class="px-20 w-full flex flex-wrap">
-      <div v-for="(arr, index) in subArrays" :key="index" class="w-1/5">
+      <div v-for="(arr, index) in subArrays" :key="index" v-bind:style="{ width: computedWidth }">
         <div v-for="(card, i) in arr" :key="i" class="w-full">
           <div class="w-full p-2">
             <Card :src="`${card.src}`" :board="`${card.recommended}`" class="w-full h-full"/>
@@ -28,8 +28,14 @@ export default {
     Card
   },
   computed: {
+    // This will work regardless of the length of cards
+    computedWidth (){
+      var subLength = Math.ceil(Math.sqrt(this.cards.length));
+      var numWidth = (1 / subLength) * 100;
+      return numWidth + "%";
+    },
     subArrays() {
-      var length = Math.ceil(this.cards.length / 5);
+      var length = Math.ceil(Math.sqrt(this.cards.length));
 
       const result = new Array(length)
         .fill()
